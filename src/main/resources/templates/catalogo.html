@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css ">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Catalogo Prodotti</h2>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Codice</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Anno Produzione</th>
+            <th>Quantità</th>
+            <th>Dettaglio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prodotto : ${prodotti}">
+            <td th:text="${prodotto.codice}"></td>
+            <td th:text="${prodotto.nome}"></td>
+            <td th:text="${prodotto.categoria}"></td>
+            <td th:text="${prodotto.annoProduzione}"></td>
+            <td th:text="${prodotto.quantita}"></td>
+            <td><a th:href="@{/prodotto/{codice}(codice=${prodotto.codice})}">Dettaglio</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="/prodotto/nuovo">Aggiungi un nuovo prodotto</a>
+    <form method="post" action="/catalogo/svuota">
+        <input type="submit" value="Svuota Catalogo"/>
+    </form>
+    </body>
+    </html>
